@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>iZotope lua Reference</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>izo-lua</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Fields">Fields</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/izo.html">izo</a></li>
+  <li><a href="../modules/izo.class.html">izo.class</a></li>
+  <li><a href="../modules/izo.gpio.html">izo.gpio</a></li>
+  <li><strong>izo.json</strong></li>
+  <li><a href="../modules/izo.optparse.html">izo.optparse</a></li>
+  <li><a href="../modules/izo.string.html">izo.string</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>izo.json</code></h1>
+<p>iZotope wrapper for json functionality.</p>
+<p>
+
+
+<p> This module wraps cjson and resty.prettycjson as well as providing helper functions</p>
+
+
+<pre>
+<span class="keyword">local</span> json = <span class="global">require</span> <span class="string">"izo.json"</span>
+</pre>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#decode">decode (json)</a></td>
+	<td class="summary">decode a JSON string to a table</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#decodefile">decodefile (path)</a></td>
+	<td class="summary">decode JSON from a file</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#encode">encode (data[, pretty=false])</a></td>
+	<td class="summary">encode a tabe into a json string</td>
+	</tr>
+</table>
+<h2><a href="#Fields">Fields</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#cjson">cjson</a></td>
+	<td class="summary">cjson module table for access to internel functions.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "decode"></a>
+    <strong>decode (json)</strong>
+    </dt>
+    <dd>
+    decode a JSON string to a table
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">json</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         text to be decoded
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a> or <span class="type">nil</span></span>
+        table of decuded values, or nil on error</li>
+        <li>
+        error on error, this is the error returned, otherwise nil</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mytable, err = decode(<span class="string">'{"count" : 5}'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "decodefile"></a>
+    <strong>decodefile (path)</strong>
+    </dt>
+    <dd>
+    decode JSON from a file
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to file to decode
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a> or <span class="type">nil</span></span>
+        table of decoded valuesm or nil on error</li>
+        <li>
+        error on error, this is set to the error, otherwise nil</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mytable, err = decodefile(<span class="string">'/path/to/file.name'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "encode"></a>
+    <strong>encode (data[, pretty=false])</strong>
+    </dt>
+    <dd>
+    encode a tabe into a json string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         data to convert into json
+        </li>
+        <li><span class="parameter">pretty</span>
+            <span class="types"><span class="type">bool</span></span>
+         set to true to do pretty string formatting of JSON
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">nil</span></span>
+        json encoded string, or nil on error</li>
+        <li>
+        error on error, this is the error returned, otherwise nil</li>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mystring, err = encode({a=<span class="string">'hello'</span>, <span class="number">0</span>=<span class="string">'test'</span>, <span class="number">1</span>=<span class="number">10</span>})</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Fields"></a>Fields</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "cjson"></a>
+    <strong>cjson</strong>
+    </dt>
+    <dd>
+    cjson module table for access to internel functions.
+ see <a href="https://www.kyne.com.au/%7Emark/software/lua-cjson-manual.html">CJson documentation for more details about usage</a>.
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-03-29 13:47:20 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
